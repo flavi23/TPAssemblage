@@ -13,7 +13,7 @@ A l'issue du séquençage, les reads obtenus en sortie sont au format fasta.
 
 ### 2. Contrôle qualité
 Une première étape de contrôle qualité est effectuée avant de procéder à l'assemblage. L'outil utilisé est Nanoplot.
-![alt text](HistogramReadLength.png "Read Length") 
+![alt text](4222_RB2_nanoplot_out/HistogramReadLength.png "Read Length") 
 
 | Tableau | Colonne |
 | ------ | ------ |
