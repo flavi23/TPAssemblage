@@ -24,7 +24,7 @@ raven -t 8 "${read}" > "${prefix}_raven".fasta
 mkdir "${prefix}_out_raven"
 mv "${prefix}_raven".fasta "${prefix}_out_raven"/
 
-for n in {1...3}
+for n in {1..3};
 do
   if [[ "${premier_tour}" == 1 ]]; then
     minimap2 -o "${prefix}${n}.paf" -x map-ont "${prefix}_out_flye/assembly.fasta" "${read}"
