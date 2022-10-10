@@ -35,6 +35,6 @@ do
     minimap2 -o "${prefix}${j}.paf" -x map-ont "${prefix}_racon${j}.fasta" "${read}"
     racon "${read}" "${prefix}${j}.paf" "${prefix}_racon${j}.fasta" > "${prefix}_racon${n}.fasta"
   fi
-  j=n
+  j="${n}"
 done
 kill $pid > /dev/null 2>&1
