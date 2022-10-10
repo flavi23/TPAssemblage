@@ -22,6 +22,8 @@ Une première étape de contrôle qualité est effectuée avant de procéder à 
 
 ### 6. Contrôle qualité du scaffolding
 
+### 7. Dot-plot : comparaison de génomes
+
 
 [//]: # (Liens)
    [flye]: <https://www.nature.com/articles/s41587-019-0072-8>
