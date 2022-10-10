@@ -9,7 +9,7 @@ Son génome est haploïde, de taille 15Mb et constitué de 19 chromosomes. On s'
 L'ADN de haut poids moléculaire a été extrait en suivant le protocole CTAB. L'ADN est qualifié de bonne qualité.
 Un premier échantillon a été prélevé à Roscoff, et deux autres ont été prélevés au même endroit, à Banyuls-sur-Mer, à deux moments distincts.
 Le séquençage a été réalisé avec un kit NSK-110, et une flowcell 9.4.1. Guppy6 “Bonito”/SUP a été utilisé pour le basecalling, afin d'améliorer le taux d'erreur (~0,1% avec cette méthode contre 3-4%). 
-A l'issue du séquençage, les reads obtenus en sortie sont au format fastq..
+A l'issue du séquençage, les reads obtenus en sortie sont au format fastq.
 Une première étape de contrôle qualité est effectuée avant de procéder à l'assemblage. L'outil utilisé est Nanoplot.
 
 ### 2. Assemblage
