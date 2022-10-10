@@ -1,5 +1,5 @@
 # Rapport d'assemblage
-### _HAU901I - Bioanalyse, Transcriptomique, Année 2022-2023_
+### _HAU901I - Bioanalyse, Transcriptomique, Année 2022-2023
 ---------------------------------------------
 _BENARD Flavie et DELMAS Jean-Charles_
 
@@ -8,11 +8,13 @@ L'espèce étudiée est une algue de Banyuls-sur-Mer, Bathycoccus.
 Son génome est haploïde, de taille 15Mb et constitué de 19 chromosomes. On s'attend donc à obtenir 19 contigs dans notre assemblage.
 L'ADN de haut poids moléculaire a été extrait en suivant le protocole CTAB. L'ADN est qualifié de bonne qualité.
 Un premier échantillon a été prélevé à Roscoff, et deux autres ont été prélevés au même endroit, à Banyuls-sur-Mer, à deux moments distincts.
-Le séquençage a été réalisé avec un kit NSK-110, et une flowcell 9.4.1. Guppy6 “Bonito”/SUP a été utilisé pour le basecalling, afin d'améliorer le taux d'erreur (~0,1% avec cette méthode contre 3-4%). 
+Le séquençage a été réalisé avec un kit NSK-110, et une flowcell 9.4.1. Guppy6 “Bonito”/SUP a été utilisé pour le basecalling, afin d'améliorer le taux d'erreur (~0,1% avec cette méthode contre 3-4%).
 A l'issue du séquençage, les reads obtenus en sortie sont au format fastq.
 Une première étape de contrôle qualité est effectuée avant de procéder à l'assemblage. L'outil utilisé est Nanoplot.
 
 ### 2. Assemblage
+L'assemblage a été réalisé avec l'outil Flye. Flye donne un répertoire en sortie avec l'assemblage nommé par défaut "assembly.fasta".
+Les algues de type Bathycoccus ne peuvent pas être cultivées de manière stérile, elles ont besoin d'être accompagnées de bactéries. L'extraction s'effectue à l'aide d'un antibiotique pour essayer d'obtenir l'échantillon le plus stérile possible. On suppose au moins deux haplotypes possibles. Ces haplotypes sont structurés en "bubbles" (à vérifier la formulation). On utilisera le programme Flye pour séparer les "bubbles". Une fois que l'alignement avec minimap2 a été réalisé, le programme Raven a permis de comparer l'assemblage de Flye avec le sien. Dans ce contexte, Raven sert de contrôle qualité de l'assemblage.
 
 ### 3. Polishing
 
