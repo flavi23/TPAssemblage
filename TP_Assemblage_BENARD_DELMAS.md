@@ -12,13 +12,20 @@ Le séquençage a été réalisé avec un kit NSK-110, et une flowcell 9.4.1. Gu
 A l'issue du séquençage, les reads obtenus en sortie sont au format fastq.
 
 
-### 2. Contrôle qualité
+### 2. Contrôle qualité du séquençage
 Une première étape de contrôle qualité est effectuée avant de procéder à l'assemblage. L'outil utilisé est Nanoplot.
 
 Histogramme de la longueur des reads de l'échantillon 4222_RB2
 ![alt text](https://github.com/flavi23/TPAssemblage/blob/main/4222_RB2_nanoplot_out/HistogramReadlength.png)
 
+### 3. Assemblage 
+
+### 4. Polishing
+
+### 5. Contrôle qualité de l'assemblage 
+
 [//]: # (Liens)
    [flye]: <https://www.nature.com/articles/s41587-019-0072-8>
    [biosphere]: <https://biosphere.france-bioinformatique.fr/>
    [southGreen]: <https://github.com/SouthGreenPlatform/training_SV_teaching/tree/2022>
+   
