@@ -4,7 +4,7 @@
 _BENARD Flavie et DELMAS Jean-Charles_
 
 ### 1. Contexte
-L'espèce étudiée est une algue de Banyuls-sur-Mer, Bathycoccus sp.
+L'espèce étudiée est une algue de Banyuls-sur-Mer, Bathycoccus.
 Son génome est haploïde, de taille 15Mb et constitué de 19 chromosomes. On s'attend donc à obtenir 19 contigs dans notre assemblage.
 L'ADN de haut poids moléculaire a été extrait en suivant le protocole CTAB. L'ADN est qualifié de bonne qualité.
 Un premier échantillon a été prélevé à Roscoff, et deux autres ont été prélevés au même endroit, à Banyuls-sur-Mer, à deux moments distincts.
