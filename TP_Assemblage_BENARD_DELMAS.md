@@ -1,5 +1,5 @@
 # Rapport d'assemblage
-### _HAU901I - Bioanalyse, Transcriptomique, Année 2022-2023
+### _HAU901I - Bioanalyse, Transcriptomique, Année 2022-2023_
 ---------------------------------------------
 _BENARD Flavie et DELMAS Jean-Charles_
 
