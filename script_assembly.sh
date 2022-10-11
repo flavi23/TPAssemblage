@@ -1,4 +1,5 @@
-premier_tour=1
+#!/bin/bash
+
 i=$@
 j=1
 read=${i}
@@ -16,25 +17,45 @@ spin(){
 spin &
 pid=$!
 
-NanoPlot --fastq "${read}" -f png -o ./"${prefix}_out_nanoplot"
+while true; do
+    read -p "Voulez vous lancer une analyse Nanoplot (O/N)?"on
+    case $on in
+        [Oo]* ) 
+        NanoPlot --fastq "${read}" -f png -o ./"${prefix}_out_nanoplot"; break;;
+        [Nn]* ) break;;
+        * ) echo "Please answer yes or no.";;
+    esac
+done
+  
+while true; do
+    read -p "Voulez vous lancer un assemblage Flye (O/N)?" on
+    case $on in
+        [Oo]* ) 
+        flye --nano-hq "${read}" -t 8 --out-dir ./"${prefix}_out_flye"; break;;
+        [Nn]* ) break;;
+        * ) echo "Please answer yes or no.";;
+    esac
+done
 
-flye --nano-hq "${read}" -t 8 --out-dir ./"${prefix}_out_flye"
+while true; do
+    read -p "Voulez vous lancer un assemblage Raven (O/N)?" on
+    case $on in
+        [Oo]* ) 
+        raven -t 8 "${read}" > "${prefix}_raven".fasta
+        mkdir "${prefix}_out_raven"
+         mv "${prefix}_raven".fasta "${prefix}_out_raven"/; break;;
+        [Nn]* ) break;;
+        * ) echo "Please answer yes or no.";;
+    esac
+done
 
-raven -t 8 "${read}" > "${prefix}_raven".fasta
-mkdir "${prefix}_out_raven"
-mv "${prefix}_raven".fasta "${prefix}_out_raven"/
+minimap2 -x map-ont "${prefix}_out_flye/assembly.fasta" "${read}" > "${prefix}_1.paf"
+racon "${read}" "${prefix}1.paf" "${prefix}_out_flye/assembly.fasta" > "${prefix}_racon1.fasta"
 
-for n in {1..3};
+for n in {2..3};
 do
-  if [[ "${premier_tour}" == 1 ]]; then
-    minimap2 -x map-ont "${prefix}_out_flye/assembly.fasta" "${read}" > "${prefix}_${n}.paf"
-    racon "${read}" "${prefix}${n}.paf" "${prefix}_out_flye/assembly.fasta" > "${prefix}_racon${n}.fasta"
-    premier_tour=0
-  fi
-  if [[ "${premier_tour}" == 0 ]]; then
-    minimap2 -x map-ont "${prefix}_racon${j}.fasta" "${read}" > "${prefix}_${j}.paf"
-    racon "${read}" "${prefix}${j}.paf" "${prefix}_racon${j}.fasta" > "${prefix}_racon${n}.fasta"
-  fi
-  j="${n}"
+  minimap2 -x map-ont "${prefix}_racon${j}.fasta" "${read}" > "${prefix}_${n}.paf" 
+  racon "${read}" "${prefix}${n}.paf" "${prefix}_racon${j}.fasta" > "${prefix}_racon${n}.fasta"
+  ((j=j+1))
 done
 kill $pid > /dev/null 2>&1
