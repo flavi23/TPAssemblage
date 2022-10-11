@@ -14,14 +14,16 @@ spin(){
                 sleep 0.1
         done
         }
-spin &
-pid=$!
 
 while true; do
     read -p "Voulez vous lancer une analyse Nanoplot (O/N)?"on
     case $on in
         [Oo]* ) 
-        NanoPlot --fastq "${read}" -f png -o ./"${prefix}_out_nanoplot"; break;;
+        spin &
+        pid=$!;
+        NanoPlot --fastq "${read}" -f png -o ./"${prefix}_out_nanoplot";
+        kill $pid > /dev/null 2>&1;
+        break;;
         [Nn]* ) break;;
         * ) echo "Please answer yes or no.";;
     esac
@@ -31,7 +33,11 @@ while true; do
     read -p "Voulez vous lancer un assemblage Flye (O/N)?" on
     case $on in
         [Oo]* ) 
-        flye --nano-hq "${read}" -t 8 --out-dir ./"${prefix}_out_flye"; break;;
+        spin &
+        pid=$!;
+        flye --nano-hq "${read}" -t 8 --out-dir ./"${prefix}_out_flye";
+        kill $pid > /dev/null 2>&1;
+        break;;
         [Nn]* ) break;;
         * ) echo "Please answer yes or no.";;
     esac
@@ -41,9 +47,12 @@ while true; do
     read -p "Voulez vous lancer un assemblage Raven (O/N)?" on
     case $on in
         [Oo]* ) 
+        spin &
+        pid=$!;
         raven -t 8 "${read}" > "${prefix}_raven".fasta
         mkdir "${prefix}_out_raven"
-         mv "${prefix}_raven".fasta "${prefix}_out_raven"/; break;;
+        mv ${prefix}_raven.fasta /${prefix}_out_raven;
+        kill $pid > /dev/null 2>&1; break;;
         [Nn]* ) break;;
         * ) echo "Please answer yes or no.";;
     esac
