@@ -49,13 +49,14 @@ while true; do
     esac
 done
 
-minimap2 -x map-ont "${prefix}_out_flye/assembly.fasta" "${read}" > "${prefix}_1.paf"
-racon "${read}" "${prefix}1.paf" "${prefix}_out_flye/assembly.fasta" > "${prefix}_racon1.fasta"
+mkdir ${prefix}_out_polishing
+minimap2 -x map-ont "${prefix}_out_flye/assembly.fasta" "${read}" > "${prefix}_out_polishing/${prefix}_1.paf"
+racon "${read}" "${prefix}_out_polishing/${prefix}1.paf" "${prefix}_out_flye/assembly.fasta" > "${prefix}_out_polishing/${prefix}_racon1.fasta"
 
 for n in {2..3};
 do
-  minimap2 -x map-ont "${prefix}_racon${j}.fasta" "${read}" > "${prefix}_${n}.paf" 
-  racon "${read}" "${prefix}${n}.paf" "${prefix}_racon${j}.fasta" > "${prefix}_racon${n}.fasta"
+  minimap2 -x map-ont "${prefix}_out_polishing/${prefix}_racon${j}.fasta" "${read}" > "${prefix}_out_polishing/${prefix}_${n}.paf" 
+  racon "${read}" "${prefix}_out_polishing/${prefix}${n}.paf" ${prefix}_out_polishing/"${prefix}_racon${j}.fasta" > "${prefix}_out_polishing/${prefix}_racon${n}.fasta"
   ((j=j+1))
 done
 kill $pid > /dev/null 2>&1
