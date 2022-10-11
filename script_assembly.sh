@@ -49,8 +49,10 @@ while true; do
         [Oo]* ) 
         spin &
         pid=$!;
-        raven -t 8 "${read}" > "${prefix}_raven".fasta
-        mkdir "${prefix}_out_raven"
+        raven -t 8 "${read}" > "${prefix}_raven".fasta 
+        if [ ! -d "${prefix}_out_raven" ];then
+                mkdir "${prefix}_out_raven";
+        fi
         mv ${prefix}_raven.fasta /${prefix}_out_raven;
         kill $pid > /dev/null 2>&1; break;;
         [Nn]* ) break;;
