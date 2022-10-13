@@ -10,11 +10,12 @@ L'ADN de haut poids moléculaire a été extrait en suivant le protocole CTAB. L
 Un premier échantillon a été prélevé à Roscoff, et deux autres ont été prélevés au même endroit, à Banyuls-sur-Mer, à deux moments distincts.
 Les algues de type Bathycoccus ne peuvent pas être cultivées de manière stérile, elles ont besoin d'être accompagnées de bactéries. L'extraction s'effectue à l'aide d'un antibiotique pour essayer d'obtenir l'échantillon le plus stérile possible.
 Le séquençage a été réalisé avec un kit NSK-110, et une flowcell 9.4.1. Guppy6 “Bonito”/SUP a été utilisé pour le basecalling, afin d'améliorer le taux d'erreur (~0,1% avec cette méthode contre 3-4%).
+Toutes les analyses bioinformatiques ont été réalisées sur une machine virtuelle du cloud IFB [biosphere].
 A l'issue du séquençage, les reads obtenus en sortie sont au format fastq.
 Une première étape de contrôle qualité est effectuée avant de procéder à l'assemblage. L'outil utilisé est Nanoplot. Les résultats sont en concordance avec les résultats de qualité du séquençage obtenus précédemment. 
 
 ### 2. Assemblage
-L'assemblage a été réalisé avec l'outil Flye. Flye donne un répertoire en sortie avec l'assemblage final nommé par défaut "assembly.fasta", et un assemblage sans polishing "contigs.fasta". Flye nécessite d'aligner les reads à l'aide de Minimap2. Flye construit d'abord des segments disjoints concaténés. L'information des reads et des graphes de répétitions permettent d'arriver à un assemblage consensus.
+L'assemblage a été réalisé avec l'outil Flye [flye]. Flye donne un répertoire en sortie avec l'assemblage final nommé par défaut "assembly.fasta", et un assemblage sans polishing "contigs.fasta". Flye nécessite d'aligner les reads à l'aide de Minimap2. Flye construit d'abord des segments disjoints concaténés. L'information des reads et des graphes de répétitions permettent d'arriver à un assemblage consensus.
 Quand on suppose au moins deux haplotypes possibles, ces derniers sont structurés en "bubbles". Par défaut, le programme Flye construit des contigs consensus plus larges à partir de ces bubbles. 
 Un autre assemblage a été réalisé à l'aide du programme Raven pour le comparer à l'assemblage obtenu avec Flye. Dans ce contexte, Raven sert de contrôle qualité de l'assemblage.
 
