@@ -20,15 +20,20 @@ Quand on suppose au moins deux haplotypes possibles, ces derniers sont structur�
 Un autre assemblage a été réalisé à l'aide du programme Raven pour le comparer à l'assemblage obtenu avec Flye. Dans ce contexte, Raven sert de contrôle qualité de l'assemblage.
 
 ### 3. Polishing
-Un étape importante pour améliorer la qualité de l'assemblage est le polishing. Pour cela on utilise l'outil Racon, couplé à un alignement des reads sur l'assemblage, à l'aide de Minimap2. Il aurait fallu pairé l'utilisation de Racon avec celle de Medaka (un autre polisher qui fait appel à un modèle d'IA), mais nous n'avons pas pu l'utiliser dans le cadre de ce projet. Racon fait du polishing par consensus. Un script bash a été créé pour faire tourner Minimap2 puis Racon autant de fois que voulu, en utilisant à chaque fois la sortie obtenue précédemment (pour le premier tour, on utilise l'assemblage final de Flye, assembly.fasta).
+Un étape importante pour améliorer la qualité de l'assemblage est le polishing. 
+Nous avons utilisé l'outil Racon, couplé à un alignement des reads sur l'assemblage, à l'aide de Minimap2. Les logiciels de polishing recherchent les mauvais assemblages locaux et autres incohérences dans un projet d'assemblage du génome, puis les corrigent. Racon fait ce polishing par consensus. Il aurait fallu pairer l'utilisation de Racon avec celle de Medaka (un autre polisher qui fait appel à un modèle d'IA), mais nous n'avons pas pu l'utiliser dans le cadre de ce projet. 
+Selon le protocole de l'outil, Racon doit être appelé trois fois pour avoir un assez bon assemblage (pour le premier tour, on utilise l'assemblage final de Flye, assembly.fasta; ensuite on utilise la sortie précédemment obtenue avec Racon). Un script bash a été créé pour faire tourner Minimap2 puis Racon trois fois. En réalité le nombre de tours requis peut varier. Il aurait donc fallu le faire plus de trois fois et évaluer la qualité de chaque sortie Racon à l'aide de Busco pour déterminer à quel moment on obtient la meilleure qualité d'assemblage. Toutefois, compte tenu des délais cela n'a pas été possible dans le cadre de ce projet. 
 
 ### 4. Contrôle qualité de l'assemblage
 
-Selon le protocole de l'outil, Racon doit être appelé trois fois (une première fois sur l'assemblage final de Flye, les deux suivantes sur la sortie précédemment obtenue avec Racon) pour avoir un assez bon assemblage, mais en réalité cela peut varier. Il aurait donc fallu le faire plus de trois fois et évaluer la qualité de chaque sortie Racon à l'aide de Busco pour déterminer à quel moment on obtient la meilleure qualité d'assemblage. Toutefois, compte tenu des délais cela n'a pas été possible dans le cadre de ce projet. 
+Quast a permis de contrôler la qualité des assemblages obtenus pour les trois échantillons. 
 
 ### 5. Scaffolding
 
 ### 6. Contrôle qualité du scaffolding
+
+Pour réaliser l'étape de scaffolding avec RagTag, il est nécessaire d'avoir un génome de référence. Nous utilisons ici le génome de Bathycoccus Prasinos (GCF_002220235.1), qui a une taille de 15Mb. 
+Nous avons à nouveau fait appel à Quast pour comparer la qualité des assemblages de chaque échantillon après l'étape de scaffolding :
 
 ### 7. Dot-plot : comparaison de génomes
 
