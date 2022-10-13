@@ -35,8 +35,6 @@ Quast a permis de contrôler la qualité des assemblages obtenus pour les trois 
 Pour réaliser l'étape de scaffolding avec RagTag, il est nécessaire d'avoir un génome de référence. Nous utilisons ici le génome de Bathycoccus Prasinos (GCF_002220235.1), qui a une taille de 15Mb. 
 Nous avons à nouveau fait appel à Quast pour comparer la qualité des assemblages de chaque échantillon après l'étape de scaffolding :
 
-### 7. Dot-plot : comparaison de génomes
-
 
 [//]: # (Liens)
    [flye]: <https://www.nature.com/articles/s41587-019-0072-8>
