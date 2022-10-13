@@ -19,7 +19,7 @@ Quand on suppose au moins deux haplotypes possibles, ces derniers sont structur�
 Un autre assemblage a été réalisé à l'aide du programme Raven pour le comparer à l'assemblage obtenu avec Flye. Dans ce contexte, Raven sert de contrôle qualité de l'assemblage.
 
 ### 3. Polishing
-Un étape importante pour améliorer la qualité de l'assemblage est le polishing. Pour cela on utilise l'outil Racon, couplé à un alignement des reads avec Minimap2. Il aurait fallu pairé l'utilisation de Racon avec celle de Medaka (un autre polisher qui fait appel à un modèle d'IA). 
+Un étape importante pour améliorer la qualité de l'assemblage est le polishing. Pour cela on utilise l'outil Racon, couplé à un alignement des reads, à l'aide de Minimap2, sur l'assemblage obtenu avec Flye. Il aurait fallu pairé l'utilisation de Racon avec celle de Medaka (un autre polisher qui fait appel à un modèle d'IA), mais nous n'avons pas pu l'utiliser dans le cadre de ce projet. Racon fait du polishing par consensus.
 
 ### 4. Contrôle qualité de l'assemblage
 
