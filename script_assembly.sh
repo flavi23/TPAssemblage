@@ -16,7 +16,7 @@ spin(){
         }
 
 while true; do
-    read -p "Voulez vous lancer une analyse Nanoplot (O/N)?"on
+    read -p "Voulez vous lancer une analyse Nanoplot (O/N)?" on
     case $on in
         [Oo]* ) 
         spin &
