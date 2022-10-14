@@ -39,7 +39,7 @@ _Métriques_
 
 ### 5. Scaffolding
 
-Pour réaliser l'étape de scaffolding avec RagTag, il est nécessaire d'avoir un génome de référence. Nous utilisons ici le génome de Bathycoccus Prasinos (GCF_002220235.1), qui a une taille de 15Mb. 
+Pour réaliser l'étape de scaffolding avec RagTag, il est nécessaire d'avoir un génome de référence. Nous utilisons ici le génome de Bathycoccus Prasinos (GCF_002220235.1), qui a une taille de 15Mb. Seule la commande 'scaffold' de Ragtag a été utilisée. 
 
 ### 6. Contrôle qualité du scaffolding
 
