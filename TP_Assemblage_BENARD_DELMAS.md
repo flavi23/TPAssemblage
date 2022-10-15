@@ -46,6 +46,8 @@ Nous avons à nouveau fait appel à Quast pour comparer la qualité des assembla
 
 ![stats](https://github.com/flavi23/TPAssemblage/blob/main/6.Quast/all_stats.png)
 
+![plots](https://github.com/flavi23/TPAssemblage/blob/main/6.Quast/all_plots.png)
+
 
 [//]: # (Liens)
    [flye]: <https://www.nature.com/articles/s41587-019-0072-8>
