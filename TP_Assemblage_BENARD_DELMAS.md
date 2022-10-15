@@ -44,11 +44,15 @@ Le scaffolding a été réalisé sur les passages 3 des échantillons B8_RB11 et
 
 Nous avons à nouveau fait appel à Quast pour comparer la qualité des assemblages de chaque échantillon après l'étape de scaffolding. Pour l'échantillon 4222_RB2, nous avons dû utiliser le fichier nettoyé, assemblé, polishé et scaffoldé par l'équipe de François Sabot, notre assemblage ne pouvant pas être scaffoldé en l'état. 
 
+
 _Métriques de l'assemblage final de tous les échantillons, par rapport à la référence_
+
 
 ![stats](https://github.com/flavi23/TPAssemblage/blob/main/6.Quast/all_stats.png)
 
+
 _Graphique de la longueur cumulée, Nx, le nombre de 'misassemblies' et le contenu en GC_
+
 
 ![plots](https://github.com/flavi23/TPAssemblage/blob/main/6.Quast/all_plots.png)
 
