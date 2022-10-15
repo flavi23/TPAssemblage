@@ -44,6 +44,12 @@ Le scaffolding a été réalisé sur les passages 3 des échantillons B8_RB11 et
 
 Nous avons à nouveau fait appel à Quast pour comparer la qualité des assemblages de chaque échantillon après l'étape de scaffolding. Pour l'échantillon 4222_RB2, nous avons dû utiliser le fichier nettoyé, assemblé, polishé et scaffoldé par l'équipe de François Sabot, notre assemblage ne pouvant pas être scaffoldé en l'état. 
 
+|     Echantillon     | Nombre contigs | Longueur totale | Plus grand contig |   N50   | L50 | GC (%)  | Misassemblies |
+|:-------------------:|:--------------:|:---------------:|:-----------------:|:-------:|:---:|:-------:|:-------------:|
+| 4222_RB2 (F. Sabot) |       31       |    22539845     |      4574793      | 1016908 |  6  |  45.81  |       25      |
+|       B8_RB11       |       24       |    15184803     |      1349481      |  989449 |  7  |  48.03  |      144      |
+|       G11_RB6       |       28       |    15364424     |      1367294      |  925304 |  8  |  47.96  |      159      |
+
 
 [//]: # (Liens)
    [flye]: <https://www.nature.com/articles/s41587-019-0072-8>
