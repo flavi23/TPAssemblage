@@ -38,7 +38,7 @@ _Table 1 : Métriques de l'assemblage après polishing pour chacun des échantil
 |   B8_RB11   |       24       |    15184803     |      1349481      |  989449 |  7  |  48.03  |      144      |
 |   G11_RB6   |       28       |    15364424     |      1367294      |  925304 |  8  |  47.96  |      159      |
 
-On peut remarquer que tous nos assemblages ont plus de 19 contigs. Le 4222_RB2 est plus grand qu'attendu, et il a un grand nombre de contigs. De plus, il a un plus faible taux de GC que les deux autres, qui sont autour de 48% (le taux de GC du génome de référence). 
+On peut remarquer que tous nos assemblages ont plus de 19 contigs. Le 4222_RB2 est plus grand qu'attendu, et il a un grand nombre de contigs. De plus, il a un plus faible taux de GC que les deux autres, qui sont autour de 48% (le taux de GC du génome de référence). Cette différence peut être due à la présence de séquences étrangères au génome qui peuvent avoir un plus faible taux de GC, et donc faire baisser le pourcentage total. Ceci plus le grand nombre de contigs nous fait penser à une possible contamination de l'échantillon.
 
 
 ### 5. Scaffolding
