@@ -67,13 +67,13 @@ Avec la longueur cumulée de l'assemblage (a), l'évolution des métriques Nx en
 
 ### 7. Contamination de l'échantillon 4222_RB2
 
-Nous avons également vérifié à l'aide du logiciel de visualisation de graphes Bandage si on retrouvait de la contamination dans nos échantillons. Bandage permet de visualiser les contigs obtenus à l'assemblage. On peut effectivement voir que pour 4222_RB2, au moins deux contigs présentent une forme circulaire caractéristique des génomes bactériens. Ces contigs seraient donc issus d'une contamination de l'échantillon par des bactéries. Les contigs en question ont été enlevés de l'assemblage nettoyé du 4222_RB2 (par l'équipe de François Sabot). Aucun des deux autres échantillons ne contient de contigs de cette forme. 
+Nous avons également vérifié à l'aide du logiciel de visualisation de graphes [Bandage] si on retrouvait de la contamination dans nos échantillons. Bandage permet de visualiser les contigs obtenus à l'assemblage. On peut effectivement voir que pour 4222_RB2, au moins deux contigs présentent une forme circulaire caractéristique des génomes bactériens. Ces contigs seraient donc issus d'une contamination de l'échantillon par des bactéries. Les contigs en question ont été enlevés de l'assemblage nettoyé du 4222_RB2 (par l'équipe de François Sabot). Aucun des deux autres échantillons ne contient de contigs de cette forme. 
 
 
 _Figure 2 : Représentation graphique des contigs de l'assemblage de 4222_RB2 (réalisé avec Flye)_
 
 
-![bandage](https://github.com/flavi23/TPAssemblage/blob/main/8.Bandage/graph_4222.png)
+![bandagegraph](https://github.com/flavi23/TPAssemblage/blob/main/8.Bandage/graph_4222.png)
 
 
 Pour améliorer la qualité de l'assemblage, il est nécessaire de réaliser des étapes de nettoyage des séquences provenant de contaminations, et de pouvoir identifier les contigs qui représentent cette contamination pour les éliminer de l'assemblage. 
@@ -82,4 +82,5 @@ Pour améliorer la qualité de l'assemblage, il est nécessaire de réaliser des
    [flye]: <https://www.nature.com/articles/s41587-019-0072-8>
    [biosphere]: <https://biosphere.france-bioinformatique.fr/>
    [southGreen]: <https://github.com/SouthGreenPlatform/training_SV_teaching/tree/2022>
+   [Bandage]: <https://academic.oup.com/bioinformatics/article/31/20/3350/196114>
    
