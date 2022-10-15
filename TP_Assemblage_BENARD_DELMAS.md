@@ -28,11 +28,11 @@ Selon le protocole de l'outil, Racon doit être appelé trois fois pour avoir un
 
 Quast a permis de contrôler la qualité des assemblages obtenus pour les trois échantillons, avant scaffolding (sur le passage 3 de racon) :  
 
-| Echantillon | Nombre contigs | Longueur totale | Plus grand contig |   N50   | L50 | GC (%) |
-|:-----------:|:--------------:|:---------------:|:-----------------:|:-------:|:---:|:-------:
-|  4222_RB2   |       31       |    22539845     |      4574793      | 1016908 |  6  |  45.81 |
-|   B8_RB11   |       24       |    15184803     |      1349481      |  989449 |  7  |  48.03 |
-|   G11_RB6   |       28       |    15364424     |      1367294      |  925304 |  8  |  47.96 |
+| Echantillon | Nombre contigs | Longueur totale | Plus grand contig |   N50   | L50 | GC (%)  | Misassemblies |
+|:-----------:|:--------------:|:---------------:|:-----------------:|:-------:|:---:|:-------:|:-------------:|
+|  4222_RB2   |       31       |    22539845     |      4574793      | 1016908 |  6  |  45.81  |       25      |
+|   B8_RB11   |       24       |    15184803     |      1349481      |  989449 |  7  |  48.03  |      144      |
+|   G11_RB6   |       28       |    15364424     |      1367294      |  925304 |  8  |  47.96  |      159      |
 
 
 ### 5. Scaffolding
