@@ -75,6 +75,9 @@ _Figure 2 : Représentation graphique des contigs de l'assemblage de 4222_RB2 (r
 
 ![bandage](https://github.com/flavi23/TPAssemblage/blob/main/8.Bandage/graph_4222.png)
 
+
+Pour améliorer la qualité de l'assemblage, il est nécessaire de réaliser des étapes de nettoyage des séquences provenant de contaminations, et de pouvoir identifier les contigs qui représentent cette contamination pour les éliminer de l'assemblage. 
+
 [//]: # (Liens)
    [flye]: <https://www.nature.com/articles/s41587-019-0072-8>
    [biosphere]: <https://biosphere.france-bioinformatique.fr/>
