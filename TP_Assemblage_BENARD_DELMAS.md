@@ -5,7 +5,7 @@ _BENARD Flavie et DELMAS Jean-Charles_
 
 ### 1. Contexte
 L'espèce étudiée est une algue de Banyuls-sur-Mer, Bathycoccus.
-Son génome est haploïde, de taille 15Mb et constitué de 19 chromosomes. On s'attend donc à obtenir 19 contigs dans notre assemblage.
+Son génome est haploïde, de taille 15Mb et constitué de 19 chromosomes. On s'attend donc à obtenir 19 scaffolds dans notre assemblage.
 L'ADN de haut poids moléculaire a été extrait en suivant le protocole CTAB. L'ADN est qualifié de bonne qualité.
 Un premier échantillon a été prélevé à Roscoff (4222_RB2), et deux autres ont été prélevés au même endroit, à Banyuls-sur-Mer, à deux moments distincts (B8_RB11 et G11_RB6).
 Les algues de type Bathycoccus ne peuvent pas être cultivées de manière stérile, elles ont besoin d'être accompagnées de bactéries. L'extraction s'effectue à l'aide d'un antibiotique pour essayer d'obtenir l'échantillon le plus stérile possible.
@@ -37,6 +37,8 @@ _Table 1 : Métriques de l'assemblage après polishing pour chacun des échantil
 |  4222_RB2   |       31       |    22539845     |      4574793      | 1016908 |  6  |  45.81  |       25      |
 |   B8_RB11   |       24       |    15184803     |      1349481      |  989449 |  7  |  48.03  |      144      |
 |   G11_RB6   |       28       |    15364424     |      1367294      |  925304 |  8  |  47.96  |      159      |
+
+On peut remarquer que tous nos assemblages ont plus de 19 contigs. Le 4222_RB2 est plus grand qu'attendu, et il a un grand nombre de contigs. De plus, il a un plus faible taux de GC que les deux autres, qui sont autour de 48% (le taux de GC du génome de référence). 
 
 
 ### 5. Scaffolding
