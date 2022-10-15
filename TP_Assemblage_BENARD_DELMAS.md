@@ -34,6 +34,8 @@ Quast a permis de contrôler la qualité des assemblages obtenus pour les trois 
 |   B8_RB11   |       24       |    15184803     |      1349481      |  989449 |  7  |  48.03  |      144      |
 |   G11_RB6   |       28       |    15364424     |      1367294      |  925304 |  8  |  47.96  |      159      |
 
+Nous avons également vérifié à l'aide du logiciel de visualisation de graphes Bandage si on retrouvait de la contamination dans nos échantillons. Bandage permet de visualiser les contigs obtenus à l'assemblage. On peut voir que pour 4222_RB2, au moins 
+
 
 ### 5. Scaffolding
 
@@ -51,7 +53,7 @@ _Métriques de l'assemblage final de tous les échantillons, par rapport à la r
 ![stats](https://github.com/flavi23/TPAssemblage/blob/main/6.Quast/all_stats.png)
 
 
-_Graphique de la longueur cumulée, Nx, le nombre de 'misassemblies' et le contenu en GC_
+_Figure 1 : Graphique de la longueur cumulée (a), Nx (b), le nombre de 'misassemblies' (c) et le contenu en GC (d)_
 
 
 ![plots](https://github.com/flavi23/TPAssemblage/blob/main/6.Quast/all_plots.png)
