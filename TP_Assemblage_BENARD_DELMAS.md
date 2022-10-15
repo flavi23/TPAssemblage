@@ -57,7 +57,9 @@ _Table 2 : Métriques de l'assemblage final (après scaffolding) de tous les éc
 ![stats](https://github.com/flavi23/TPAssemblage/blob/main/6.Quast/all_stats.png)
 
 
-_Figure 1 : Graphique de la longueur cumulée (a), Nx (b), le nombre de 'misassemblies' (c) et le contenu en GC (d), pour tous les échantillons par rapport à la référence_
+_Figure 1 : Graphiques des métriques pour tous les échantillons par rapport à la référence (obtenus avec Quast)_
+
+Avec la longueur cumulée de l'assemblage (a), l'évolution des métriques Nx en fonction de la valeur de x (b), le nombre de 'misassemblies' (c) et le taux de GC (d)
 
 
 ![plots](https://github.com/flavi23/TPAssemblage/blob/main/6.Quast/all_plots.png)
