@@ -26,15 +26,17 @@ Selon le protocole de l'outil, Racon doit être appelé trois fois pour avoir un
 
 ### 4. Contrôle qualité de l'assemblage
 
-Quast a permis de contrôler la qualité des assemblages obtenus pour les trois échantillons, avant scaffolding (sur le passage 3 de racon) :  
+Quast a permis de contrôler la qualité des assemblages obtenus pour les trois échantillons, avant scaffolding (sur le passage 3 de racon).
+
+
+_Table 1 : Métriques de l'assemblage après polishing pour chacun des échantillons_
+
 
 | Echantillon | Nombre contigs | Longueur totale | Plus grand contig |   N50   | L50 | GC (%)  | Misassemblies |
 |:-----------:|:--------------:|:---------------:|:-----------------:|:-------:|:---:|:-------:|:-------------:|
 |  4222_RB2   |       31       |    22539845     |      4574793      | 1016908 |  6  |  45.81  |       25      |
 |   B8_RB11   |       24       |    15184803     |      1349481      |  989449 |  7  |  48.03  |      144      |
 |   G11_RB6   |       28       |    15364424     |      1367294      |  925304 |  8  |  47.96  |      159      |
-
-Nous avons également vérifié à l'aide du logiciel de visualisation de graphes Bandage si on retrouvait de la contamination dans nos échantillons. Bandage permet de visualiser les contigs obtenus à l'assemblage. On peut voir que pour 4222_RB2, au moins 
 
 
 ### 5. Scaffolding
@@ -47,17 +49,27 @@ Le scaffolding a été réalisé sur les passages 3 des échantillons B8_RB11 et
 Nous avons à nouveau fait appel à Quast pour comparer la qualité des assemblages de chaque échantillon après l'étape de scaffolding. Pour l'échantillon 4222_RB2, nous avons dû utiliser le fichier nettoyé, assemblé, polishé et scaffoldé par l'équipe de François Sabot, notre assemblage ne pouvant pas être scaffoldé en l'état. 
 
 
-_Métriques de l'assemblage final de tous les échantillons, par rapport à la référence_
+_Table 2 : Métriques de l'assemblage final (après scaffolding) de tous les échantillons, par rapport à la référence_
 
 
 ![stats](https://github.com/flavi23/TPAssemblage/blob/main/6.Quast/all_stats.png)
 
 
-_Figure 1 : Graphique de la longueur cumulée (a), Nx (b), le nombre de 'misassemblies' (c) et le contenu en GC (d)_
+_Figure 1 : Graphique de la longueur cumulée (a), Nx (b), le nombre de 'misassemblies' (c) et le contenu en GC (d), pour tous les échantillons par rapport à la référence_
 
 
 ![plots](https://github.com/flavi23/TPAssemblage/blob/main/6.Quast/all_plots.png)
 
+
+### 7. Contamination de l'échantillon 4222_RB2
+
+Nous avons également vérifié à l'aide du logiciel de visualisation de graphes Bandage si on retrouvait de la contamination dans nos échantillons. Bandage permet de visualiser les contigs obtenus à l'assemblage. On peut effectivement voir que pour 4222_RB2, au moins deux contigs présentent une forme circulaire caractéristique des génomes bactériens. Ces contigs seraient donc issus d'une contamination de l'échantillon par des bactéries. Les contigs en question ont été enlevés de l'assemblage nettoyé du 4222_RB2 (par l'équipe de François Sabot). Aucun des deux autres échantillons ne contient de contigs de cette forme. 
+
+
+_Figure 2 : Représentation graphique des contigs de l'assemblage de 4222_RB2 (réalisé avec Flye)_
+
+
+![bandage](https://github.com/flavi23/TPAssemblage/blob/main/8.Bandage/graph_4222.png)
 
 [//]: # (Liens)
    [flye]: <https://www.nature.com/articles/s41587-019-0072-8>
