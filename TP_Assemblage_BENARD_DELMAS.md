@@ -63,7 +63,7 @@ Le scaffolding a été réalisé sur les passages 3 des échantillons B8_RB11 et
 
 ### 6. Contrôle qualité du scaffolding
 
-Nous avons à nouveau fait appel à Quast pour comparer la qualité des assemblages de chaque échantillon après l'étape de scaffolding. Pour l'échantillon 4222_RB2, nous avons dû utiliser le fichier nettoyé, assemblé, polishé et scaffoldé par l'équipe de François Sabot, notre assemblage ne pouvant pas être scaffoldé en l'état. 
+Nous avons à nouveau fait appel à Quast pour comparer la qualité des assemblages de chaque échantillon après l'étape de scaffolding. Pour l'échantillon 4222_RB2, nous avons dû utiliser le fichier nettoyé, assemblé, polishé et scaffoldé par l'équipe de François Sabot, notre assemblage ne pouvant pas être scaffoldé en l'état. La figure 1 (c) montre que l'échantillon 4222_RB2 a des erreurs d'assemblages qui apparaissent plus précocément que les deux autres (25 contre 148 et 159 pour B8_RB11 et G11_RB6). Cet échantillon est aussi celui qui présente des mismatchs sur un faible taux de kbp (11.21 contre 423.07 et 486.53 pour B8_RB11 et G11_RB6). Il a également l'alignement le plus long et est plus représentatif d'une réalité biologique sur les contigs (21 contigs, Bathycoccus possède 19 chromosomes), ce serait donc l'échantillon le plus proche de la réalité biologique si on se fit aux données métriques.
 
 
 _Table 2 : Métriques de l'assemblage final (après scaffolding) de tous les échantillons, par rapport à la référence_
@@ -85,13 +85,13 @@ Avec la longueur cumulée de l'assemblage (a), l'évolution des métriques Nx en
 Nous avons également vérifié à l'aide du logiciel de visualisation de graphes [Bandage] si on retrouvait de la contamination dans nos échantillons. Bandage permet de visualiser les contigs obtenus à l'assemblage. On peut effectivement voir que pour 4222_RB2, au moins deux contigs présentent une forme circulaire caractéristique des génomes bactériens. Ces contigs seraient donc issus d'une contamination de l'échantillon par des bactéries. Les contigs en question ont été enlevés de l'assemblage nettoyé du 4222_RB2 (par l'équipe de François Sabot). Aucun des deux autres échantillons ne contient une contamination aussi importante, mais on retrouve des circularisation sur d'autres fragments où on suppose de la contamination. 
 
 
-_Figure 2 : Représentation graphique des contigs de l'assemblage de 4222_RB2 (réalisé avec Flye)_
+_Figure 2 : Représentation graphique des contigs des assemblages des échantillons (réalisé avec Flye)_
 
 
 ![bandagegraph](https://github.com/flavi23/TPAssemblage/blob/main/8.Bandage/unknown.png)
 
 
-Pour améliorer la qualité de l'assemblage, il est nécessaire de réaliser des étapes de nettoyage des séquences provenant de contaminations, et de pouvoir identifier les contigs qui représentent cette contamination pour les éliminer de l'assemblage. 
+On constate malgré tout une forte contamination pour l'échantillon 4222_RB2 par rapport aux deux autres échantillons. Pour améliorer la qualité de l'assemblage, il est nécessaire de réaliser des étapes de nettoyage des séquences provenant de contaminations, et de pouvoir identifier les contigs qui représentent cette contamination pour les éliminer de l'assemblage. 
 
 [//]: # (Liens)
    [flye]: <https://www.nature.com/articles/s41587-019-0072-8>
