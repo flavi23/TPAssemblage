@@ -5,24 +5,24 @@ _BENARD Flavie et DELMAS Jean-Charles_
 
 ### 1. Contexte
 L'espèce étudiée est une algue de Banyuls-sur-Mer, Bathycoccus.
-Son génome est haploïde, de taille 15Mb et constitué de 19 chromosomes. On s'attend donc à obtenir 19 scaffolds dans notre assemblage.
+Son génome est haploïde, de taille 15Mb et est constitué de 19 chromosomes. On s'attend donc à obtenir 19 contigs dans notre assemblage.
 L'ADN de haut poids moléculaire a été extrait en suivant le protocole CTAB. L'ADN est qualifié de bonne qualité.
 Un premier échantillon a été prélevé à Roscoff (4222_RB2), et deux autres ont été prélevés au même endroit, à Banyuls-sur-Mer, à deux moments distincts (B8_RB11 et G11_RB6).
 Les algues de type Bathycoccus ne peuvent pas être cultivées de manière stérile, elles ont besoin d'être accompagnées de bactéries. L'extraction s'effectue à l'aide d'un antibiotique pour essayer d'obtenir l'échantillon le plus stérile possible.
 Le séquençage a été réalisé avec un kit NSK-110, et une flowcell 9.4.1. Guppy6 “Bonito”/SUP a été utilisé pour le basecalling, afin d'améliorer le taux d'erreur (~0,1% avec cette méthode contre 3-4%).
 Toutes les analyses bioinformatiques ont été réalisées sur une machine virtuelle du cloud IFB [biosphere].
 A l'issue du séquençage, les reads obtenus en sortie sont au format fastq.
-Une première étape de contrôle qualité est effectuée avant de procéder à l'assemblage. L'outil utilisé est Nanoplot. Après analyse, on constate que le génome  a été couvert 62 fois avec des reads pouvant atteindre 21kb. La taille médiane étant à 16.6kb signifie une bonne qualité de séquençage pour du long-read. Le génome analysé étant un génome haploïde, il faudrait une profondeur d'au moins 30X pour une analyse significative. Ici, la profondeur à 62X est valide pour débuter l'assemblage.
+Une première étape de contrôle qualité est effectuée avant de procéder à l'assemblage. L'outil utilisé est Nanoplot. Après analyse, on constate que le génome a été couvert 62 fois avec des reads pouvant atteindre 21kb. La taille médiane étant à 16.6kb signifie une bonne qualité de séquençage pour du long-read. Le génome analysé étant un génome haploïde, il faudrait une profondeur d'au moins 30X pour une analyse significative. Ici, la profondeur à 62X est valide pour débuter l'assemblage.
 
 ### 2. Assemblage
-L'assemblage a été réalisé avec l'outil [flye]. Flye donne un répertoire en sortie avec l'assemblage final nommé par défaut "assembly.fasta", et un assemblage sans polishing "contigs.fasta". Flye nécessite d'aligner les reads à l'aide de Minimap2. Flye construit d'abord des segments disjoints concaténés. L'information des reads et des graphes de répétitions permettent d'arriver à un assemblage consensus.
+L'assemblage a été réalisé avec l'outil Flye. Flye donne un répertoire en sortie avec l'assemblage final nommé par défaut "assembly.fasta", et un assemblage sans polishing "contigs.fasta". Flye nécessite d'aligner les reads à l'aide de Minimap2. Flye construit d'abord des segments disjoints concaténés. L'information des reads alignés et des graphes de répétitions permettent d'arriver à un assemblage consensus (voir [Kolmogorov et al], 2019).
 Quand on suppose au moins deux haplotypes possibles, ces derniers sont structurés en "bubbles". Un bubble est une bifurcation de séquences sur un graphe où le chemin se sépare en deux noeuds distincts (séquences différentes) et refusionne ensuite en un seul point. Par défaut, le programme Flye construit des contigs consensus plus larges à partir de ces bubbles. 
 Un autre assemblage a été réalisé à l'aide du programme Raven pour le comparer à l'assemblage obtenu avec Flye. Dans ce contexte, Raven sert de contrôle qualité de l'assemblage.
 
 ### 3. Polishing
 Un étape importante pour améliorer la qualité de l'assemblage est le polishing. 
 Nous avons utilisé l'outil Racon, couplé à un alignement des reads sur l'assemblage, à l'aide de Minimap2. Les logiciels de polishing recherchent les mauvais assemblages locaux et autres incohérences dans un projet d'assemblage du génome, puis les corrigent. Racon fait ce polishing par consensus. Il aurait fallu pairer l'utilisation de Racon avec celle de Medaka (un autre polisher qui fait appel à un modèle d'IA), mais nous n'avons pas pu l'utiliser dans le cadre de ce projet. 
-Selon le protocole de l'outil, Racon doit être appelé trois fois pour avoir un assez bon assemblage sans générer des erreurs supplémentaires (pour le premier tour, on utilise l'assemblage final de Flye, assembly.fasta; ensuite on utilise la sortie précédemment obtenue avec Racon). Un script bash a été créé pour obtenir trois passages de Minimap2 puis Racon. En réalité le nombre de tours requis peut varier. Nous avons donc effectué plus de trois passages et avons voulu évaluer la qualité de chaque sortie Racon à l'aide de Busco, pour déterminer à quel moment on obtient la meilleure qualité d'assemblage. Busco est un outil permettant de visualiser l'évolution du polishing. Ne disposant pas de Busco sur la machine virtuelle, n'ayant pas non plus réussi à l'installer et n'ayant aucun retour du site gVolante (pouvant exécuter l'outil Busco en ligne), nous avons quand même simulé des résultats de Busco sur 6 passages de Racon, qui sont présentés dans la Table 1.
+Selon le protocole de l'outil, Racon doit être appelé trois fois pour avoir un assez bon assemblage sans générer des erreurs supplémentaires (pour le premier tour, on utilise l'assemblage final de Flye, assembly.fasta; ensuite on utilise la sortie précédemment obtenue avec Racon). Un script bash a été créé pour obtenir trois passages de Minimap2 puis Racon. En réalité le nombre de tours requis peut varier. Nous avons donc effectué plus de trois passages et avons voulu évaluer la qualité de chaque sortie Racon à l'aide de Busco, pour déterminer à quel moment on obtient la meilleure qualité d'assemblage. Busco est un outil qui va nous permettre ici de visualiser l'évolution de la qualité de l'assemblage après polishing. Ne disposant pas de Busco sur la machine virtuelle, n'ayant pas non plus réussi à l'installer et n'ayant aucun retour du site gVolante (pouvant exécuter l'outil Busco en ligne), nous avons quand même simulé des résultats de Busco sur 6 passages de Racon, qui sont présentés dans la Table 1.
 
 _Table 1 : Tableau théorique sur la précision des résultats de Busco en pourcentage en fonction du nombre d'exécution de l'outil Racon en réutilisant le fichier de sortie de Racon_
 
@@ -60,12 +60,12 @@ Concernant le taux de GC, l'échantillon 4222_RB2 a un plus faible taux de GC qu
 ### 5. Scaffolding
 
 Pour réaliser l'étape de scaffolding avec RagTag, il est nécessaire d'avoir un génome de référence. Nous utilisons ici le génome de Bathycoccus Prasinos (GCF_002220235.1), qui a une taille de 15Mb. Seule la commande 'scaffold' de Ragtag a été utilisée. 
-Le scaffolding a été réalisé sur les passages 3 des échantillons B8_RB11 et G11_RB6. Pour ce qui est de 4222_RB2, nous n'avons pas pu executé Ragtag, ni sur un des trois passages racon, ni sur l'assemblage flye sans étape supplémentaire de polishing, ni même sur l'assemblage raven. Il se peut que nous ayons eu un problème au niveau du fichier de reads de départ.
+Le scaffolding a été réalisé sur les passages 3 des échantillons B8_RB11 et G11_RB6. Pour ce qui est de l'échantillon 4222_RB2, nous n'avons pas réussi à faire le scaffolding avec RagTag, ni sur l'assemblage sans polishing, ni sur les fichiers polishés avec racon (passages 1 à 3), ni même sur l'assemblage Raven. Nous avons dû avoir un problème dans le pipeline au niveau de l'étape de polishing (peut-être dû à un manque de maîtrise de l'outil).
 
 ### 6. Contrôle qualité du scaffolding
 
 Nous avons à nouveau fait appel à Quast pour comparer la qualité des assemblages de chaque échantillon après l'étape de scaffolding. 
-Pour l'échantillon 4222_RB2, nous n'avons pas pu utiliser nos fichiers : nous n'avons pas réussi à faire le scaffolding avec RagTag, ni sur l'assemblage sans polishing, ni sur les fichiers polishés avec racon, ni même sur l'assemblage Raven. Pour cet échantillon, il y a dû y avoir un problème dans le pipeline au niveau de l'étape de polishing (peut-être dû à un manque de maîtrise de l'outil). Nous avons donc dû utiliser le fichier nettoyé, assemblé, polishé et scaffoldé par l'équipe de François Sabot, notre assemblage ne pouvant pas être scaffoldé en l'état. 
+Pour l'échantillon 4222_RB2, nous n'avons pas pu utiliser nos fichiers comme expliqué plus haut. Nous avons donc dû utiliser le fichier nettoyé, assemblé, polishé et scaffoldé par l'équipe de François Sabot, notre assemblage ne pouvant pas être scaffoldé en l'état. 
 La figure 1 (c) montre que l'échantillon 4222_RB2 a des erreurs d'assemblages qui apparaissent plus précocément que les deux autres (25 contre 148 et 159 pour B8_RB11 et G11_RB6). Cet échantillon est aussi celui qui présente des mismatchs sur un faible taux de kbp (11.21 contre 423.07 et 486.53 pour B8_RB11 et G11_RB6). Il a également l'alignement le plus long et est plus représentatif d'une réalité biologique sur les contigs (21 contigs, Bathycoccus possède 19 chromosomes), ce serait donc l'échantillon le plus proche de la réalité biologique si on se fit aux données métriques.
 
 
@@ -98,7 +98,7 @@ _Figure 2 : Représentation graphique des contigs des assemblages des échantill
 On constate malgré tout une forte contamination pour l'échantillon 4222_RB2 par rapport aux deux autres échantillons. Pour améliorer la qualité de l'assemblage, il est nécessaire de réaliser des étapes de nettoyage des séquences préalables à l'assemblage. Il sera possible d'identifier des contigs contenant des contaminations qu'on traitera, et ces contigs seront éventuellement éliminés de l'assemblage. 
 
 [//]: # (Liens)
-   [flye]: <https://www.nature.com/articles/s41587-019-0072-8>
+   [Kolmogorov et al]: <https://www.nature.com/articles/s41587-019-0072-8>
    [biosphere]: <https://biosphere.france-bioinformatique.fr/>
    [southGreen]: <https://github.com/SouthGreenPlatform/training_SV_teaching/tree/2022>
    [Bandage]: <https://academic.oup.com/bioinformatics/article/31/20/3350/196114>
