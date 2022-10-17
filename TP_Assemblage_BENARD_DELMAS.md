@@ -96,6 +96,7 @@ _Figure 2 : Représentation graphique des contigs des assemblages des échantill
 
 
 On constate malgré tout une forte contamination pour l'échantillon 4222_RB2 par rapport aux deux autres échantillons. Pour améliorer la qualité de l'assemblage, il est nécessaire de réaliser des étapes de nettoyage des séquences préalables à l'assemblage. Il sera possible d'identifier des contigs contenant des contaminations qu'on traitera, et ces contigs seront éventuellement éliminés de l'assemblage. 
+En conclusion, l'interprétation biologique devra se faire avec prudence, car on retrouve de l'ADN contaminé dans les échantillons, ce qui a pu influencer l'assemblage. En effet on retrouve un certain nombre de misassemblies. On a pu également visualiser avec Bandage la formation de contigs chimères. 
 
 [//]: # (Liens)
    [Kolmogorov et al]: <https://www.nature.com/articles/s41587-019-0072-8>
