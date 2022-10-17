@@ -1,4 +1,4 @@
-# Rapport d'assemblage
+# Rapport d'assemblage du 17 octobre 2022
 ### _HAU901I - Bioanalyse, Transcriptomique, Année 2022-2023_
 ---------------------------------------------
 _BENARD Flavie et DELMAS Jean-Charles_
@@ -22,21 +22,22 @@ Un autre assemblage a été réalisé à l'aide du programme Raven pour le compa
 ### 3. Polishing
 Un étape importante pour améliorer la qualité de l'assemblage est le polishing. 
 Nous avons utilisé l'outil Racon, couplé à un alignement des reads sur l'assemblage, à l'aide de Minimap2. Les logiciels de polishing recherchent les mauvais assemblages locaux et autres incohérences dans un projet d'assemblage du génome, puis les corrigent. Racon fait ce polishing par consensus. Il aurait fallu pairer l'utilisation de Racon avec celle de Medaka (un autre polisher qui fait appel à un modèle d'IA), mais nous n'avons pas pu l'utiliser dans le cadre de ce projet. 
-Selon le protocole de l'outil, Racon doit être appelé trois fois pour avoir un assez bon assemblage (pour le premier tour, on utilise l'assemblage final de Flye, assembly.fasta; ensuite on utilise la sortie précédemment obtenue avec Racon). Un script bash a été créé pour obtenir trois passages de Minimap2 puis Racon. En réalité le nombre de tours requis peut varier. Il aurait donc fallu faire plus de trois passages et évaluer la qualité de chaque sortie Racon à l'aide de Busco, pour déterminer à quel moment on obtient la meilleure qualité d'assemblage. Toutefois, compte tenu des délais cela n'a pas été possible dans le cadre de ce projet. 
+Selon le protocole de l'outil, Racon doit être appelé trois fois pour avoir un assez bon assemblage sans générer des erreurs supplémentaires (pour le premier tour, on utilise l'assemblage final de Flye, assembly.fasta; ensuite on utilise la sortie précédemment obtenue avec Racon). Un script bash a été créé pour obtenir trois passages de Minimap2 puis Racon. En réalité le nombre de tours requis peut varier. Nous avons donc effectué plus de trois passages et avons voulu évaluer la qualité de chaque sortie Racon à l'aide de Busco, pour déterminer à quel moment on obtient la meilleure qualité d'assemblage. Busco est un outil permettant de visualiser l'évolution du polishing. Ne disposant pas de Busco sur la machine virtuelle, n'ayant pas non plus réussi à l'installer et n'ayant aucun retour du site gVolante (pouvant exécuter l'outil Busco en ligne), nous avons quand même simulé des résultats de Busco sur 6 passages de Racon, qui sont présentés dans la Table 1.
 
-_Table 1 : Tableau théorique sur la précision des résultats de Busco en pourcentage en fonction du nombre d'exécution de l'outil Racon en réutilisant le même fichier d'entrée_
+_Table 1 : Tableau théorique sur la précision des résultats de Busco en pourcentage en fonction du nombre d'exécution de l'outil Racon en réutilisant le fichier de sortie de Racon_
 
-| Nb. de passage par Racon | Précison des résultats (%) par Busco | 
-|:------------------------:|:------------------------------------:|
-|            0             |                  80                  | 
-|            1             |                  86                  | 
-|            2             |                  89                  | 
-|            3             |                  93                  | 
-|            4             |                  91                  | 
-|            5             |                  90                  | 
-|            6             |                  83                  | 
+| Nb. de passage par Racon | Précision des résultats (%) par Busco | 
+|:------------------------:|:-------------------------------------:|
+|            0             |                   80                  | 
+|            1             |                   86                  | 
+|            2             |                   89                  | 
+|            3             |                   93                  | 
+|            4             |                   91                  | 
+|            5             |                   90                  | 
+|            6             |                   83                  | 
 
-Busco est un outil permettant de visualiser l'évolution du polishing. Pour avoir une utilisation optimale sans générer des erreurs supplémentaires, il faudrait lancer Racon 3 fois tout en réutilisant le fichier Racon du tour précédent à chaque nouveau passage afin d'accentuer le polishing. Ne disposant pas de Busco sur la machine virtuelle, n'ayant pas non plus réussi à l'installer et n'ayant aucun retour du site gVolante (pouvant exécuter l'outil Busco en ligne), nous avons quand même généré notre fichier Racon après 3 passages et nous avons continué à travailler avec lui en se basant sur la théorie de la précision des résultats de Busco au bout de 3 passages.
+Nous nous sommes basés sur ces résultats de Busco simulés pour réaliser l'étape de scaffolding sur les fichiers obtenus sur le 3eme passage de Racon. 
+
 
 ### 4. Contrôle qualité de l'assemblage
 
@@ -52,7 +53,7 @@ _Table 2 : Métriques de l'assemblage après polishing pour chacun des échantil
 |   B8_RB11   |       24       |    15184803     |      1349481      |  989449 |  7  |  48.03  |      144      |
 |   G11_RB6   |       28       |    15364424     |      1367294      |  925304 |  8  |  47.96  |      159      |
 
-On peut remarquer que tous nos assemblages ont plus de 19 contigs. Le 4222_RB2 est plus grand qu'attendu, et il a un grand nombre de contigs. La longueur du plus grand fragment est à 4mb alors que le chromosome le plus long de Bathycoccus sp. fait 2mb. Ici, les algues de type Bathycoccus ne peuvent pas être cultivées de manière stérile. Elles ont besoin d’être accompagnées de bactéries. La méthode d'extraction se fait avec un antibiotique pour tenter de séparer les bactéries. Malgré que ce soit la technique d'extraction privilégiée pour maximiser l'obtention du génome seul de Bathycoccus, nous attendons à retrouver des ADN de bactéries en plus de celui de Bathycoccus.
+On peut remarquer que tous nos assemblages ont plus de 19 contigs. Le 4222_RB2 est plus grand qu'attendu, et il a un grand nombre de contigs. La longueur du plus grand fragment est à 4mb alors que le chromosome le plus long de Bathycoccus sp. fait 2mb. 
 Concernant le taux de GC, l'échantillon 4222_RB2 a un plus faible taux de GC que les deux autres, qui sont autour de 48% (le taux de GC du génome de référence). Cette différence peut être due à la présence de séquences étrangères au génome qui peuvent avoir un plus faible taux de GC, et donc faire baisser le pourcentage total. Ceci, plus le grand nombre de contigs, nous fait penser à une contamination de l'échantillon. Cette contamination ferait écho à la récupération du matériel génétique de Bathycoccus qui ne peut pas s'effectuer de manière stérile.
 
 
@@ -63,10 +64,12 @@ Le scaffolding a été réalisé sur les passages 3 des échantillons B8_RB11 et
 
 ### 6. Contrôle qualité du scaffolding
 
-Nous avons à nouveau fait appel à Quast pour comparer la qualité des assemblages de chaque échantillon après l'étape de scaffolding. Pour l'échantillon 4222_RB2, nous avons dû utiliser le fichier nettoyé, assemblé, polishé et scaffoldé par l'équipe de François Sabot, notre assemblage ne pouvant pas être scaffoldé en l'état. La figure 1 (c) montre que l'échantillon 4222_RB2 a des erreurs d'assemblages qui apparaissent plus précocément que les deux autres (25 contre 148 et 159 pour B8_RB11 et G11_RB6). Cet échantillon est aussi celui qui présente des mismatchs sur un faible taux de kbp (11.21 contre 423.07 et 486.53 pour B8_RB11 et G11_RB6). Il a également l'alignement le plus long et est plus représentatif d'une réalité biologique sur les contigs (21 contigs, Bathycoccus possède 19 chromosomes), ce serait donc l'échantillon le plus proche de la réalité biologique si on se fit aux données métriques.
+Nous avons à nouveau fait appel à Quast pour comparer la qualité des assemblages de chaque échantillon après l'étape de scaffolding. 
+Pour l'échantillon 4222_RB2, nous n'avons pas pu utiliser nos fichiers : nous n'avons pas réussi à faire le scaffolding avec RagTag, ni sur l'assemblage sans polishing, ni sur les fichiers polishés avec racon, ni même sur l'assemblage Raven. Pour cet échantillon, il y a dû y avoir un problème dans le pipeline au niveau de l'étape de polishing (peut-être dû à un manque de maîtrise de l'outil). Nous avons donc dû utiliser le fichier nettoyé, assemblé, polishé et scaffoldé par l'équipe de François Sabot, notre assemblage ne pouvant pas être scaffoldé en l'état. 
+La figure 1 (c) montre que l'échantillon 4222_RB2 a des erreurs d'assemblages qui apparaissent plus précocément que les deux autres (25 contre 148 et 159 pour B8_RB11 et G11_RB6). Cet échantillon est aussi celui qui présente des mismatchs sur un faible taux de kbp (11.21 contre 423.07 et 486.53 pour B8_RB11 et G11_RB6). Il a également l'alignement le plus long et est plus représentatif d'une réalité biologique sur les contigs (21 contigs, Bathycoccus possède 19 chromosomes), ce serait donc l'échantillon le plus proche de la réalité biologique si on se fit aux données métriques.
 
 
-_Table 2 : Métriques de l'assemblage final (après scaffolding) de tous les échantillons, par rapport à la référence_
+_Table 3 : Métriques de l'assemblage final (après scaffolding) de tous les échantillons, par rapport à la référence_
 
 
 ![stats](https://github.com/flavi23/TPAssemblage/blob/main/6.Quast/all_stats.png)
@@ -82,7 +85,8 @@ Avec la longueur cumulée de l'assemblage (a), l'évolution des métriques Nx en
 
 ### 7. Contamination de l'échantillon 4222_RB2
 
-Nous avons également vérifié à l'aide du logiciel de visualisation de graphes [Bandage] si on retrouvait de la contamination dans nos échantillons. Bandage permet de visualiser les contigs obtenus à l'assemblage. On peut effectivement voir que pour 4222_RB2, au moins deux contigs présentent une forme circulaire caractéristique des génomes bactériens. Ces contigs seraient donc issus d'une contamination de l'échantillon par des bactéries. Les contigs en question ont été enlevés de l'assemblage nettoyé du 4222_RB2 (par l'équipe de François Sabot). Aucun des deux autres échantillons ne contient une contamination aussi importante, mais on retrouve des circularisation sur d'autres fragments où on suppose de la contamination. 
+Nous avons également vérifié à l'aide du logiciel de visualisation de graphes [Bandage] si on retrouvait de la contamination dans nos échantillons. Bandage permet de visualiser les contigs obtenus à l'assemblage. Cette fois, nous avons utilisé notre fichier pour l'échantillon 4222_RB2 (le but étant de comprendre pourquoi on obtenait de tels résultats au niveau de l'assemblage). On peut effectivement voir que pour 4222_RB2, au moins deux contigs présentent une forme circulaire caractéristique des génomes bactériens. Ces contigs seraient donc issus d'une contamination de l'échantillon par des bactéries. Aucun des deux autres échantillons ne contient une contamination aussi importante, mais on retrouve des circularisations sur d'autres fragments où on suppose de la contamination. 
+Les contigs contaminés de l'échantillon 4222_RB2 ont été par la suite enlevés de l'assemblage nettoyé par l'équipe de François Sabot. 
 
 
 _Figure 2 : Représentation graphique des contigs des assemblages des échantillons (réalisé avec Flye)_
@@ -91,7 +95,7 @@ _Figure 2 : Représentation graphique des contigs des assemblages des échantill
 ![bandagegraph](https://github.com/flavi23/TPAssemblage/blob/main/8.Bandage/unknown.png)
 
 
-On constate malgré tout une forte contamination pour l'échantillon 4222_RB2 par rapport aux deux autres échantillons. Pour améliorer la qualité de l'assemblage, il est nécessaire de réaliser des étapes de nettoyage des séquences provenant de contaminations, et de pouvoir identifier les contigs qui représentent cette contamination pour les éliminer de l'assemblage. 
+On constate malgré tout une forte contamination pour l'échantillon 4222_RB2 par rapport aux deux autres échantillons. Pour améliorer la qualité de l'assemblage, il est nécessaire de réaliser des étapes de nettoyage des séquences préalables à l'assemblage. Il sera possible d'identifier des contigs contenant des contaminations qu'on traitera, et ces contigs seront éventuellement éliminés de l'assemblage. 
 
 [//]: # (Liens)
    [flye]: <https://www.nature.com/articles/s41587-019-0072-8>
